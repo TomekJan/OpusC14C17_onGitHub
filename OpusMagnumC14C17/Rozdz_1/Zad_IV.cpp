@@ -32,7 +32,7 @@ void rozdzielacz(Arg...arg){
 
 int main()
 {
- cout << "\n cokolwiek \n";
+  cout << "Opus 14/17 Rozdz_1 Zad_4: " << __PRETTY_FUNCTION__ <<endl;
  rozdzielacz(5.5, 7.8, 1000, 105, 15);
  druk(vmale, "male");
  druk(vsrednie, "srednie");
