@@ -33,7 +33,6 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
-		<Unit filename="Rozdz_1/Zad_XIV.cpp" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>
