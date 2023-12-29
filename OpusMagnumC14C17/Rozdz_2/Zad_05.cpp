@@ -3,21 +3,30 @@
 
 using namespace std;
 
+//Nowe typy START
+struct Dobry {
+int wartosc=1;
+};
+struct Zly {
+int wartosc=0;
+};
+//Nowe typy STOP
+
 // Szablony F-cji decydujacej START
 template <typename T>
-false_type czy_lubiany_typ;
+Zly czy_lubiany_typ;
 
 template<>
-true_type czy_lubiany_typ<const char*>;
+Dobry czy_lubiany_typ<const char*>;
 
 template<>
-true_type czy_lubiany_typ<string>;
+Dobry czy_lubiany_typ<string>;
 // Szablony F-cji decydujacej STOP
 
 // Szablon nadrzedny START
 //// Typ Lubiany START
 template <typename T>
-void fun_dwoista(T arg, true_type){
+void fun_dwoista(T arg, Dobry){
     cout << "\tF. dwoista wg szablonu A dla typow lubianych" << endl;
     string tekst(arg);
     cout << "\tTekst:>" << tekst <<"<, \n\ta litera nr[2] to " << arg[2] << "\"" << endl;
@@ -26,7 +35,7 @@ void fun_dwoista(T arg, true_type){
 
 //// Typ NIE Lubiany START
 template <typename T>
-void fun_dwoista(T arg, false_type){
+void fun_dwoista(T arg, Zly){
     cout << "\tF. dwoista wg szablonu B dla typow NIE-lubianych" << endl;
     T tmp = arg;
     cout <<"\tWydruk nie-tekstowego arg=" << tmp << endl;
@@ -38,8 +47,8 @@ void fun_dwoista(T arg, false_type){
 template <typename T>
 void funkcja_robocza(T arg){
     fun_dwoista(arg, czy_lubiany_typ<T>);
-    cout << endl << "Czy ten typ T jest aprobowany? ";
-    if(czy_lubiany_typ<T>){
+    cout << "Czy ten typ T jest aprobowany? ";
+    if(czy_lubiany_typ<T>.wartosc){
         cout << "TAK" << endl;
     }
     else {
